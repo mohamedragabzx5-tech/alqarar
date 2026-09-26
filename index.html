@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090814">
+
+<title>القرار</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:'Cairo',sans-serif;
+  background:#070711;
+  color:#fff;
+  min-height:100vh;
+}
+
+button,input,textarea{
+  font-family:inherit;
+}
+
+button{
+  border:0;
+  cursor:pointer;
+}
+
+.app{
+  max-width:520px;
+  margin:auto;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 90% 0%,rgba(130,60,255,.16),transparent 30%),
+    radial-gradient(circle at 0% 30%,rgba(255,40,150,.08),transparent 25%),
+    #080811;
+  padding-bottom:85px;
+}
+
+/* HEADER */
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  padding:15px 18px 10px;
+  background:rgba(8,8,17,.88);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.header-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo{
+  width:43px;
+  height:43px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#ffd600,#ff3d81,#743cff,#00cfff);
+  box-shadow:0 0 25px rgba(150,70,255,.35);
+  font-size:21px;
+}
+
+.brand h1{
+  font-size:24px;
+  font-weight:800;
+}
+
+.brand small{
+  display:block;
+  color:#9998aa;
+  font-size:9px;
+  margin-top:-5px;
+}
+
+.header-actions{
+  display:flex;
+  gap:8px;
+}
+
+.icon-btn{
+  width:40px;
+  height:40px;
+  border-radius:13px;
+  color:#fff;
+  background:#151522;
+  border:1px solid #29293a;
+  font-size:18px;
+}
+
+/* STORIES */
+
+.stories{
+  padding:18px 14px 10px;
+  display:flex;
+  gap:13px;
+  overflow-x:auto;
+}
+
+.story{
+  min-width:64px;
+  text-align:center;
+  font-size:10px;
+  color:#aaa9b8;
+}
+
+.story-ring{
+  width:60px;
+  height:60px;
+  padding:2px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#ffcf33,#ff3190,#713cff,#00d9ff);
+  margin:auto auto 5px;
+}
+
+.story-ring div{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  border:3px solid #090912;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#242438;
+  font-size:23px;
+}
+
+.add-story .story-ring{
+  background:#252538;
+  border:1px dashed #68687c;
+  padding:0;
+}
+
+.add-story .story-ring div{
+  border:0;
+  background:transparent;
+  color:#9b7aff;
+}
+
+/* SECTION */
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:13px 18px;
+}
+
+.section-title h2{
+  font-size:17px;
+}
+
+.section-title span{
+  color:#a378ff;
+  font-size:11px;
+}
+
+/* TRENDING */
+
+.trending{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding:0 15px 13px;
+}
+
+.trend{
+  min-width:145px;
+  padding:13px;
+  border-radius:18px;
+  background:linear-gradient(135deg,#19152c,#121222);
+  border:1px solid #29253e;
+}
+
+.trend b{
+  font-size:12px;
+}
+
+.trend p{
+  color:#aaa;
+  font-size:10px;
+  margin-top:5px;
+}
+
+/* CARD */
+
+.card{
+  margin:10px 14px;
+  padding:15px;
+  border-radius:23px;
+  background:linear-gradient(145deg,rgba(27,27,43,.98),rgba(14,14,25,.98));
+  border:1px solid rgba(255,255,255,.07);
+  box-shadow:0 15px 40px rgba(0,0,0,.2);
+}
+
+.user{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin-bottom:13px;
+}
+
+.avatar{
+  width:39px;
+  height:39px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#743cff,#ff3187);
+  font-size:19px;
+}
+
+.user-info{
+  flex:1;
+}
+
+.user-info b{
+  display:block;
+  font-size:12px;
+}
+
+.user-info span{
+  color:#77768a;
+  font-size:9px;
+}
+
+.follow{
+  background:transparent;
+  color:#a77bff;
+  border:1px solid #6340a5;
+  border-radius:10px;
+  padding:6px 10px;
+  font-size:9px;
+}
+
+.question{
+  font-size:18px;
+  font-weight:800;
+  line-height:1.7;
+  margin-bottom:14px;
+}
+
+.poll{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+
+.vote{
+  min-height:65px;
+  border-radius:16px;
+  color:#fff;
+  font-weight:700;
+  font-size:13px;
+  background:#202030;
+  border:1px solid #333347;
+  transition:.25s;
+}
+
+.vote:first-child{
+  background:linear-gradient(135deg,#ffb000,#ff3d82);
+  border:0;
+}
+
+.vote:hover{
+  transform:translateY(-2px);
+}
+
+.vote small{
+  display:block;
+  margin-top:3px;
+  opacity:.75;
+  font-size:9px;
+}
+
+.result{
+  display:none;
+  margin-top:9px;
+}
+
+.result-bar{
+  height:9px;
+  border-radius:20px;
+  background:#29283a;
+  overflow:hidden;
+  margin:5px 0;
+}
+
+.result-fill{
+  height:100%;
+  width:62%;
+  background:linear-gradient(90deg,#ffb000,#ff3190,#753cff);
+}
+
+.result-text{
+  display:flex;
+  justify-content:space-between;
+  font-size:9px;
+  color:#aaa;
+}
+
+.card-image{
+  height:160px;
+  border-radius:17px;
+  margin-bottom:13px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:55px;
+  background:
+    linear-gradient(135deg,rgba(255,60,130,.3),rgba(90,50,255,.3)),
+    #202035;
+}
+
+.actions{
+  display:flex;
+  justify-content:space-between;
+  margin-top:14px;
+  padding-top:12px;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+
+.action{
+  background:transparent;
+  color:#858496;
+  font-size:11px;
+}
+
+.action.active{
+  color:#ff4b91;
+}
+
+.comments{
+  display:none;
+  margin-top:12px;
+  padding-top:10px;
+  border-top:1px solid #282737;
+}
+
+.comment{
+  font-size:11px;
+  margin:7px 0;
+  color:#bbb;
+}
+
+/* CREATE */
+
+.create{
+  margin:15px;
+  padding:17px;
+  border-radius:22px;
+  background:linear-gradient(135deg,#17142a,#11111f);
+  border:1px solid #332b50;
+}
+
+.create textarea{
+  width:100%;
+  min-height:75px;
+  resize:none;
+  border:0;
+  outline:0;
+  color:#fff;
+  background:transparent;
+  font-size:14px;
+}
+
+.option-input{
+  width:100%;
+  padding:12px;
+  margin-top:8px;
+  border-radius:13px;
+  border:1px solid #303044;
+  background:#11111d;
+  color:#fff;
+  outline:none;
+}
+
+.publish{
+  width:100%;
+  padding:13px;
+  margin-top:12px;
+  border-radius:15px;
+  color:#fff;
+  font-weight:800;
+  background:linear-gradient(90deg,#ffb000,#ff3190,#733cff);
+}
+
+/* BOTTOM NAV */
+
+.bottom{
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:520px;
+  height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  background:rgba(10,10,20,.94);
+  backdrop-filter:blur(20px);
+  border-top:1px solid #252536;
+  z-index:30;
+}
+
+.nav{
+  background:transparent;
+  color:#777688;
+  font-size:10px;
+}
+
+.nav.active{
+  color:#fff;
+}
+
+.plus{
+  width:52px;
+  height:52px;
+  border-radius:18px;
+  color:#fff;
+  font-size:25px;
+  background:linear-gradient(135deg,#ffb000,#ff3190,#713cff);
+  box-shadow:0 7px 25px rgba(150,60,255,.35);
+}
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+/* TOAST */
+
+.toast{
+  position:fixed;
+  bottom:85px;
+  left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:#242333;
+  padding:12px 18px;
+  border-radius:14px;
+  font-size:11px;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+  z-index:100;
+  border:1px solid #403d55;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
+}
+
+/* DESKTOP */
+
+@media(min-width:700px){
+  body{
+    background:#030307;
+  }
+  .app{
+    box-shadow:0 0 80px rgba(0,0,0,.6);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<header class="header">
+  <div class="header-row">
+
+    <div class="brand">
+      <div class="logo">✓×</div>
+      <div>
+        <h1>القرار</h1>
+        <small>اسأل الناس .. وقرر</small>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button class="icon-btn" onclick="toast('البحث قريبًا 🔍')">⌕</button>
+      <button class="icon-btn" onclick="showPage('notifications')">♡</button>
+    </div>
+
+  </div>
+</header>
+
+<!-- HOME -->
+
+<section id="home" class="page active">
+
+  <div class="stories">
+
+    <div class="story add-story" onclick="showPage('create')">
+      <div class="story-ring"><div>＋</div></div>
+      أضف قصة
+    </div>
+
+    <div class="story">
+      <div class="story-ring"><div>👨🏻</div></div>
+      Ahmed
+    </div>
+
+    <div class="story">
+      <div class="story-ring"><div>👩🏻</div></div>
+      Sara
+    </div>
+
+    <div class="story">
+      <div class="story-ring"><div>🧔🏻</div></div>
+      Youssef
+    </div>
+
+    <div class="story">
+      <div class="story-ring"><div>👩🏽</div></div>
+      Laila
+    </div>
+
+  </div>
+
+  <div class="section-title">
+    <h2>🔥 قرارات رائجة</h2>
+    <span>عرض الكل</span>
+  </div>
+
+  <div class="trending">
+    <div class="trend">
+      <b>❤️ أكلمه ولا أستنى؟</b>
+      <p>2.4K صوت</p>
+    </div>
+
+    <div class="trend">
+      <b>👟 Nike ولا Adidas؟</b>
+      <p>1.8K صوت</p>
+    </div>
+
+    <div class="trend">
+      <b>✈️ أسافر ولا أوفر؟</b>
+      <p>1.2K صوت</p>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <h2>قرارات لك</h2>
+    <span>جديد</span>
+  </div>
+
+  <!-- CARD 1 -->
+
+  <article class="card">
+
+    <div class="user">
+      <div class="avatar">👨🏻</div>
+
+      <div class="user-info">
+        <b>Ahmed_3bd</b>
+        <span>منذ ساعتين</span>
+      </div>
+
+      <button class="follow" onclick="follow(this)">متابعة</button>
+    </div>
+
+    <div class="question">
+      أروح البحر النهارده ولا أقعد؟ 🌊
+    </div>
+
+    <div class="card-image">🌅</div>
+
+    <div class="poll">
+
+      <button class="vote" onclick="vote(this)">
+        أروح 🌊
+        <small>اضغط للتصويت</small>
+      </button>
+
+      <button class="vote" onclick="vote(this)">
+        أقعد 🏠
+        <small>اضغط للتصويت</small>
+      </button>
+
+    </div>
+
+    <div class="result">
+      <div class="result-text">
+        <span>أروح 62%</span>
+        <span>1,240 صوت</span>
+      </div>
+      <div class="result-bar">
+        <div class="result-fill"></div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="action" onclick="like(this)">♡ 342</button>
+      <button class="action" onclick="comments(this)">💬 48</button>
+      <button class="action" onclick="share()">↗ مشاركة</button>
+    </div>
+
+    <div class="comments">
+      <div class="comment">👩 Sara: روح طبعًا 😂</div>
+      <div class="comment">🧔 Youssef: اقعد الجو حر 😂</div>
+    </div>
+
+  </article>
+
+  <!-- CARD 2 -->
+
+  <article class="card">
+
+    <div class="user">
+      <div class="avatar">👩🏻</div>
+
+      <div class="user-info">
+        <b>Sara.moh</b>
+        <span>منذ 4 ساعات</span>
+      </div>
+
+      <button class="follow" onclick="follow(this)">متابعة</button>
+    </div>
+
+    <div class="question">
+      أي واحد أحسن؟ 👟
+    </div>
+
+    <div class="poll">
+
+      <button class="vote" onclick="vote(this)">
+        Nike
+        <small>71%</small>
+      </button>
+
+      <button class="vote" onclick="vote(this)">
+        Adidas
+        <small>29%</small>
+      </button>
+
+    </div>
+
+    <div class="result">
+      <div class="result-text">
+        <span>Nike 71%</span>
+        <span>890 صوت</span>
+      </div>
+
+      <div class="result-bar">
+        <div class="result-fill" style="width:71%"></div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="action" onclick="like(this)">♡ 210</button>
+      <button class="action" onclick="comments(this)">💬 31</button>
+      <button class="action" onclick="share()">↗ مشاركة</button>
+    </div>
+
+    <div class="comments">
+      <div class="comment">👨 Ahmed: Nike 🔥</div>
+    </div>
+
+  </article>
+
+</section>
+
+
+<!-- EXPLORE -->
+
+<section id="explore" class="page">
+
+  <div class="section-title">
+    <h2>🔥 استكشاف</h2>
+  </div>
+
+  <div class="trending">
+
+    <div class="trend">
+      <b>❤️ علاقات</b>
+      <p>12K قرار</p>
+    </div>
+
+    <div class="trend">
+      <b>👕 ستايل</b>
+      <p>8K قرار</p>
+    </div>
+
+    <div class="trend">
+      <b>✈️ سفر</b>
+      <p>6K قرار</p>
+    </div>
+
+    <div class="trend">
+      <b>📚 دراسة</b>
+      <p>4K قرار</p>
+    </div>
+
+  </div>
+
+  <div class="section-title">
+    <h2>الأكثر تفاعلًا</h2>
+  </div>
+
+  <article class="card">
+
+    <div class="user">
+      <div class="avatar">🧔</div>
+      <div class="user-info">
+        <b>Youssef93</b>
+        <span>12K متابع</span>
+      </div>
+      <button class="follow" onclick="follow(this)">متابعة</button>
+    </div>
+
+    <div class="question">
+      أكلمه ولا أستنى؟ 😂❤️
+    </div>
+
+    <div class="poll">
+      <button class="vote" onclick="vote(this)">أكلمه</button>
+      <button class="vote" onclick="vote(this)">أستنى</button>
+    </div>
+
+    <div class="result">
+      <div class="result-text">
+        <span>أكلمه 58%</span>
+        <span>4,820 صوت</span>
+      </div>
+
+      <div class="result-bar">
+        <div class="result-fill" style="width:58%"></div>
+      </div>
+    </div>
+
+  </article>
+
+</section>
+
+
+<!-- CREATE -->
+
+<section id="create" class="page">
+
+  <div class="section-title">
+    <h2>➕ اعمل قرار</h2>
+  </div>
+
+  <div class="create">
+
+    <textarea id="question" placeholder="إيه القرار اللي محتار فيه؟ 🤔"></textarea>
+
+    <input class="option-input" id="option1" placeholder="الاختيار الأول">
+
+    <input class="option-input" id="option2" placeholder="الاختيار الثاني">
+
+    <button class="publish" onclick="publishDecision()">
+      🚀 انشر القرار
+    </button>
+
+  </div>
+
+  <div id="newDecision"></div>
+
+</section>
+
+
+<!-- NOTIFICATIONS -->
+
+<section id="notifications" class="page">
+
+  <div class="section-title">
+    <h2>🔔 الإشعارات</h2>
+  </div>
+
+  <div class="card">
+
+    <div class="comment">❤️ <b>Sara</b> عملت Like على قرارك</div>
+    <div class="comment">👤 <b>Ahmed</b> بدأ يتابعك</div>
+    <div class="comment">💬 <b>Youssef</b> علّق على قرارك</div>
+    <div class="comment">🗳️ 12 شخصًا صوتوا على قرارك</div>
+
+  </div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section id="profile" class="page">
+
+  <div class="card" style="text-align:center">
+
+    <div class="avatar" style="width:80px;height:80px;margin:auto;font-size:35px">
+      😎
+    </div>
+
+    <h2 style="margin-top:10px">Moha</h2>
+
+    <p style="color:#888;font-size:11px">
+      محتار؟ اسأل الناس 👀
+    </p>
+
+    <div style="display:flex;justify-content:space-around;margin-top:20px">
+
+      <div>
+        <b>24</b>
+        <small style="display:block;color:#888">قرار</small>
+      </div>
+
+      <div>
+        <b>1.2K</b>
+        <small style="display:block;color:#888">متابع</small>
+      </div>
+
+      <div>
+        <b>386</b>
+        <small style="display:block;color:#888">متابَعين</small>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- NAV -->
+
+<nav class="bottom">
+
+  <button class="nav active" onclick="showPage('home')">
+    🏠<br>الرئيسية
+  </button>
+
+  <button class="nav" onclick="showPage('explore')">
+    🔥<br>استكشاف
+  </button>
+
+  <button class="plus" onclick="showPage('create')">
+    +
+  </button>
+
+  <button class="nav" onclick="showPage('notifications')">
+    🔔<br>الإشعارات
+  </button>
+
+  <button class="nav" onclick="showPage('profile')">
+    👤<br>الملف
+  </button>
+
+</nav>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+
+function showPage(id){
+
+  document.querySelectorAll('.page').forEach(p=>{
+    p.classList.remove('active');
+  });
+
+  document.getElementById(id).classList.add('active');
+
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  });
+
+}
+
+function toast(message){
+
+  const t=document.getElementById('toast');
+
+  t.textContent=message;
+  t.classList.add('show');
+
+  setTimeout(()=>{
+    t.classList.remove('show');
+  },2000);
+
+}
+
+function vote(button){
+
+  const card=button.closest('.card');
+
+  card.querySelectorAll('.vote').forEach(v=>{
+    v.style.opacity='.45';
+  });
+
+  button.style.opacity='1';
+  button.style.transform='scale(1.03)';
+
+  const result=card.querySelector('.result');
+
+  if(result){
+    result.style.display='block';
+  }
+
+  toast('تم تسجيل صوتك 🗳️');
+
+}
+
+function like(button){
+
+  button.classList.toggle('active');
+
+  if(button.classList.contains('active')){
+    button.innerHTML='♥ أعجبني';
+    toast('أضفت إعجاب ❤️');
+  }else{
+    button.innerHTML='♡ إعجاب';
+  }
+
+}
+
+function comments(button){
+
+  const card=button.closest('.card');
+  const box=card.querySelector('.comments');
+
+  box.style.display =
+    box.style.display==='block'
+    ? 'none'
+    : 'block';
+
+}
+
+function share(){
+
+  if(navigator.share){
+
+    navigator.share({
+      title:'القرار',
+      text:'شوف القرار ده على تطبيق القرار 👀'
+    });
+
+  }else{
+
+    toast('تم نسخ رابط القرار 🔗');
+
+  }
+
+}
+
+function follow(button){
+
+  if(button.textContent==='متابعة'){
+
+    button.textContent='متابَع';
+    button.style.color='#67e8f9';
+    toast('بدأت متابعة المستخدم 👤');
+
+  }else{
+
+    button.textContent='متابعة';
+    button.style.color='#a77bff';
+
+  }
+
+}
+
+function publishDecision(){
+
+  const q=document.getElementById('question').value.trim();
+  const o1=document.getElementById('option1').value.trim();
+  const o2=document.getElementById('option2').value.trim();
+
+  if(!q || !o1 || !o2){
+
+    toast('اكتب السؤال والاختيارين أولًا ✍️');
+    return;
+
+  }
+
+  const box=document.getElementById('newDecision');
+
+  box.innerHTML=`
+
+  <article class="card">
+
+    <div class="user">
+
+      <div class="avatar">😎</div>
+
+      <div class="user-info">
+        <b>Moha</b>
+        <span>الآن</span>
+      </div>
+
+    </div>
+
+    <div class="question">
+      ${q}
+    </div>
+
+    <div class="poll">
+
+      <button class="vote" onclick="vote(this)">
+        ${o1}
+      </button>
+
+      <button class="vote" onclick="vote(this)">
+        ${o2}
+      </button>
+
+    </div>
+
+    <div class="result">
+
+      <div class="result-text">
+        <span>في انتظار التصويت</span>
+        <span>0 صوت</span>
+      </div>
+
+      <div class="result-bar">
+        <div class="result-fill" style="width:50%"></div>
+      </div>
+
+    </div>
+
+  </article>
+
+  `;
+
+  document.getElementById('question').value='';
+  document.getElementById('option1').value='';
+  document.getElementById('option2').value='';
+
+  toast('تم نشر قرارك 🚀');
+
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  });
+
+}
+
+</script>
+
+</body>
+  </html>
